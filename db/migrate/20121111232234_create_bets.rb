@@ -1,6 +1,5 @@
 class CreateBets < ActiveRecord::Migration
   def change
-    drop_table :bets
     
     create_table :bets do |t|
       t.integer :owner
