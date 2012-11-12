@@ -1,0 +1,19 @@
+<header class="bar-title">
+  <%= link_to 'Cancel', bets_path, "data-transition" => "slide-out", class: 'button-prev' %>
+  <h1 class="title">Dignity Bet</h1>
+  <%= link_to pick_challenger_path, "data-transition" => "slide-in", onclick:"alert('wassup')", class: 'button' do %>
+    <i class='icon-plus' style="font-size:15px"></i>
+  <% end  %>
+</header>
+
+<div class="content">
+  <div class="content-padded">
+
+    <%= form_for(@bet) do |f| %>
+      <%= f.text_field :lose_status %>
+      <%= f.hidden_field :status, value: "active" %>
+      <%= f.submit %>
+    <% end %>
+
+  </div>
+</div>

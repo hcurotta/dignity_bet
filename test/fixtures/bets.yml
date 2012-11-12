@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  owner: 1
+  challenger: 1
+  challenge: MyString
+  win_status: MyString
+  lose_status: MyString
+  status: MyString
+
+two:
+  owner: 1
+  challenger: 1
+  challenge: MyString
+  win_status: MyString
+  lose_status: MyString
+  status: MyString

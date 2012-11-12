@@ -1,0 +1,12 @@
+<div class="content">
+  <div class="content-padded">
+
+<% if current_user %>
+  Signed in as <strong><%= current_user.name %></strong>!
+  <%= link_to "Sign out", signout_path, id: "sign_out" , "data-ignore" => "push"%>
+<% else %>
+  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", "data-ignore" => "push" %>
+<% end %>
+<li><%= link_to 'New Bet', "/bets/new.html", "data-ignore" => "push" %><span class="chevron"></span></li>
+
+</div></div>

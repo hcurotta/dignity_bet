@@ -1,0 +1,57 @@
+<header class="bar-title">
+  <h1 class="title">Dignity Bet</h1>
+  <%= link_to pick_challenger_path, "data-transition" => "slide-in", class: 'button' do %>
+    <i class='icon-plus' style="font-size:15px"></i>
+  <% end  %>
+</header>
+
+<div class="content">
+  <div class="content-padded">
+
+<script>
+function accept_challenge(id,name){
+ var conf = confirm("Accept " +name+"'s bet?") 
+ if(conf===true){
+   window.location.replace("/bet/"+id+"/accept") 
+ }
+}
+</script>
+
+
+<% if @new_challenges.any? %>
+    <h2><%= @new_challenges.count %> Challenge Requested</h2>
+    <ul>
+    <% @new_challenges.each do |request| %>
+    <div  onclick="accept_challenge(<%= request.id %>,'<%=request.owner.name %>')" data-ignore="push">
+     <li><%= request.owner.name %></li>
+     <li><%= request.challenge %></li>
+     </div>
+    </ul>
+<% end %> 
+<% end %> 
+
+
+<table>
+  <tr>
+
+<% @bets.each do |bet| %>
+
+  <tr>
+    <td><%= bet.owner.name   %></td>
+    <td><%= bet.challenger.name %></td>
+  </tr>
+  <tr>
+    <td><%= bet.challenge %></td>
+    <td><%= bet.status %></td>
+  </tr>
+  <tr>
+    <td><%= link_to 'Show', bet %></td>
+    <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
+    <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
+</div>
+</div>

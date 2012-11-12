@@ -1,0 +1,15 @@
+<header class="bar-title">
+  <%= link_to 'Back', pick_challenger_path, "data-transition" => "slide-out", class: 'button-prev' %>
+  <h1 class="title">Create Bet</h1>
+  <%= link_to "/bets/new.html", "data-transition" => "slide-in", class: 'button' do %>
+    <i class='icon-plus' style="font-size:15px"></i>
+  <% end  %>
+</header>
+
+<div class="content">
+  <div class="content-padded" style="background: url('http://graph.facebook.com/<%= @challenger.uid %>/picture?type=large') no-repeat; background-size: auto 100%;">
+
+    <%= render 'form' %>
+
+  </div>
+</div>

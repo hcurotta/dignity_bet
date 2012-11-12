@@ -1,0 +1,22 @@
+<header class="bar-title">
+  <%= link_to 'Back', bets_path, "data-transition" => "slide-out", class: 'button-prev' %>
+  <h1 class="title">Friends with Dignity Bet</h1>
+</header>
+
+<div class="content">
+  <div class="content-padded">
+
+
+
+<ul class="list inset">
+  <% @friends_with_app.each do |friend| %>
+    <li>
+    <%= link_to new_bet_path(:challenger_id=>friend.id), "data-transition" => "slide-in"  do %>
+    <%= image_tag "http://graph.facebook.com/#{friend.uid}/picture?type=small", width: "50" %> <%= friend.name %>
+     <span class="chevron"></span></li>
+    <% end %>
+  <% end %>
+</ul>
+
+</div>
+</div>
