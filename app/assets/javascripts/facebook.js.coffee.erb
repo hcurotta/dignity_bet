@@ -8,9 +8,9 @@ jQuery ->
     
 
 window.fbAsyncInit = ->
-  appid = <%= ENV["APP_ID"] %>
-  appsecret = <%= ENV["APP_SECRET"] %>
-  $.ready(alert(appid + " " + appsecret))
+  appid = apikey
+  
+  $.ready(alert(appid))
   
   FB.init(appId: appid, cookie: true, status: true, xfbml: true)
   
