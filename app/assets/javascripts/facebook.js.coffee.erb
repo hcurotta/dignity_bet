@@ -8,12 +8,10 @@ jQuery ->
 
 
 window.fbAsyncInit = ->
-  FB.init(appId: '<%= ENV["APP_ID"] %>', cookie: true, status: true, xfbml: true)
+  FB.init(appId: "<%= ENV['APP_ID'] %>", cookie: true, status: true, xfbml: true)
   
   $('#sign_in').click (e) ->
     e.preventDefault()
-    FB.getLoginStatus (response) ->
-      console.log(response)
     FB.login (response) ->
       window.location = '/auth/facebook/callback' if response.authResponse
     , scope: "email, publish_stream"
