@@ -1,5 +1,5 @@
 <header class="bar-title">
-  <h1 class="title">Dignity Bet</h1>
+  <h1 class="title bold">Dignity Bet</h1>
   <%= link_to pick_challenger_path, "data-transition" => "slide-in", class: 'button' do %>
     <i class='icon-plus' style="font-size:15px"></i>
   <% end  %>
@@ -47,7 +47,6 @@ function accept_challenge(id,name){
   <tr>
     <td><%= link_to 'Show', bet %></td>
     <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
-    <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

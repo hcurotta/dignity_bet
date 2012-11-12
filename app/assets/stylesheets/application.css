@@ -13,7 +13,12 @@
  *= require font-awesome.css
  */
 
+.bold {
+	font-family: 'Open Sans', sans-serif; font-weight: 800; 
+}
+
 .content-padded{
+	font-family: 'Open Sans', sans-serif; font-weight: 400; 
 	background-image: url("grid.png");
 	height:100%;
 	/*	background-color: red;*/
