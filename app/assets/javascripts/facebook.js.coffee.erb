@@ -8,8 +8,14 @@ jQuery ->
     
 
 window.fbAsyncInit = ->
+  config_array = config.split(" ")
   
-  FB.init(appId: apikey, cookie: true, status: true, xfbml: true)
+  root=config_array[0]
+  appid=config_array[1]
+  
+  $.ready(alert(appid + root))
+  
+  FB.init(appId: appid, cookie: true, status: true, xfbml: true)
   
   $('#sign_in').click (e) ->
     e.preventDefault()
@@ -27,8 +33,8 @@ window.fbAsyncInit = ->
             window.location.href = '/auth/facebook/callback'
         , scope: "email,publish_stream"
       else
-        permissionUrl = "https://m.facebook.com/dialog/oauth?client_id="+apikey+"&response_type=code&redirect_uri="+root+"auth/facebook/callback&scope=email,publish_stream";
-        window.location = permissionUrl;
+        permissionUrl = "https://m.facebook.com/dialog/oauth?client_id="+appid+"&response_type=code&redirect_uri="+root+"auth/facebook/callback&scope=email,publish_stream";
+        window.location.href = permissionUrl;
 
 
   $('#sign_out').click (e) ->

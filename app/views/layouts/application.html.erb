@@ -21,8 +21,8 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,800,300' rel='stylesheet' type='text/css'>
   
   <script>
-    window.apikey = <%= ENV["APP_ID"] %>;
-    window.root = <%= root_url %>
+    window.config = "<%= root_url %> <%= ENV['APP_ID'] %>"
+
   </script>
   
 </head>
