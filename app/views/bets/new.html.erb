@@ -6,8 +6,30 @@
   <% end  %>
 </header>
 
+<nav class="bar-tab">
+   <ul class="tab-inner">
+     <li class="tab-item active">
+       <a href="">
+         <i class="icon-pushpin" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Live Bets</div>
+       </a>
+     </li>
+     <li class="tab-item">
+       <a href="">
+         <i class="icon-time" style='color:white; font-size: 30px;'></i>
+
+         <div class="tab-label">Past Bets</div>
+       </a>
+     </li>
+
+     </li>
+   </ul>
+ </nav>
+
 <div class="content">
-  <div class="content-padded" style="background: url('http://graph.facebook.com/<%= @challenger.uid %>/picture?type=large') no-repeat; background-size: auto 100%;">
+  <div class="content-padded">
+    <h2>Showdown with <%= @challenger.name %></h2>
+    <br/>
 
     <%= render 'form' %>
 

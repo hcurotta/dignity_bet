@@ -3,16 +3,38 @@
   <h1 class="title">Friends with Dignity Bet</h1>
 </header>
 
+<nav class="bar-tab">
+   <ul class="tab-inner">
+     <li class="tab-item active">
+       <a href="">
+         <i class="icon-pushpin" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Live Bets</div>
+       </a>
+     </li>
+     <li class="tab-item">
+       <a href="">
+         <i class="icon-time" style='color:white; font-size: 30px;'></i>
+
+         <div class="tab-label">Past Bets</div>
+       </a>
+     </li>
+
+     </li>
+   </ul>
+ </nav>
+
+
 <div class="content">
   <div class="content-padded">
 
 
 
-<ul class="list inset">
+<ul class="list">
   <% @friends_with_app.each do |friend| %>
     <li>
     <%= link_to new_bet_path(:challenger_id=>friend.id), "data-transition" => "slide-in"  do %>
-    <%= image_tag "http://graph.facebook.com/#{friend.uid}/picture?type=small", width: "50" %> <%= friend.name %>
+    <%= image_tag "http://graph.facebook.com/#{friend.uid}/picture?type=small", width: "50" %> 
+     <div class="friend-text"><%= friend.name %></div>
      <span class="chevron"></span></li>
     <% end %>
   <% end %>

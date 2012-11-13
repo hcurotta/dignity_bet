@@ -12,9 +12,7 @@ window.fbAsyncInit = ->
   
   root=config_array[0]
   appid=config_array[1]
-  
-  $.ready(alert(appid + root))
-  
+    
   FB.init(appId: appid, cookie: true, status: true, xfbml: true)
   
   $('#sign_in').click (e) ->

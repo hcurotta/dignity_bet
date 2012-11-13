@@ -107,8 +107,8 @@ body {
   bottom: 0;
   left: 0;
   font: 14px/1.25 "Helvetica Neue", sans-serif;
-  color: #222;
-  background-color: #fff;
+  color: #FFF;
+  background-color: #000;
   overflow-x:hidden;
 }
 
@@ -497,14 +497,14 @@ a {
 .list {
   margin-bottom: 10px;
   list-style: none;
-  background-color: #fff;
+  background-color: #000;
 }
 
 /* Pad each list item and add dividers */
 .list li {
   position: relative;
   padding: 20px 60px 20px 10px; /* Given extra right padding to accomodate counts, chevrons or buttons */
-  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 
 /* Give top border to first list items */
@@ -528,9 +528,11 @@ a {
   width: auto;
   margin-right: 10px;
   margin-left: 10px;
-  border: 1px solid rgba(0, 0, 0, .1);
+  border: 1px solid rgba(255, 255, 255, .5);
   border-radius: 6px;
   box-sizing: border-box;
+  font-size: 15px;
+  vertical-align: middle;
 }
 
 /* Remove border from first/last standard list items to avoid double border at top/bottom of lists */
@@ -541,6 +543,10 @@ a {
   border-bottom-width: 0;
 }
 
+.list img{
+	padding: 0px 10px;
+	float: left;
+}
 
 /* List dividers
 -------------------------------------------------- */
@@ -701,6 +707,8 @@ select {
 .input-row {
   overflow: hidden;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
+  color: black;
+  font-weight: 200;
 }
 
 /* Remove bottom border on last input-row to avoid double bottom border */
@@ -713,7 +721,7 @@ select {
   float: left;
   width: 25%;
   padding: 11px 10px 9px 13px; /* Optimizing the baseline for mobile. */
-  font-weight: bold;
+  font-weight: 400;
 }
 
 /* Actual inputs float to right of labels and also have a set percentage */

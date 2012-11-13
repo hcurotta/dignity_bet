@@ -1,14 +1,16 @@
 <div class="content">
-  <div class="content-padded">
-
+  <div class="content-padded login-content">
+    <div class='logo'><i class='icon-trophy'></i>
+      <h1 class='logo-text'>Dignity Bet</h1>
+    </div>
+    
     <% if current_user %>
       Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" , "data-ignore" => "push"%>
+      <%= link_to "Sign out", signout_path, id: "sign_out" , "data-ignore" => "push", class: "button-block"%>
     <% else %>
-      <%= link_to "/auth/facebook", id: "sign_in", "data-ignore" => "push" do %>
+      <%= link_to "/auth/facebook", id: "sign_in", "data-ignore" => "push", class: "button-block" do %>
         <span class='icon-facebook-sign' style="font-size:25px;"></span> Sign in with Facebook
       <% end %>
     <% end %>
-
   </div>
 </div>
