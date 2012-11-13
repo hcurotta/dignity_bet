@@ -27,7 +27,7 @@ window.fbAsyncInit = ->
             window.location.href = '/auth/facebook/callback'
         , scope: "email,publish_stream"
       else
-        permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=apikey&response_type=code&redirect_uri=http://10.1.1.8:3000/auth/facebook/callback&scope=email,publish_stream";
+        permissionUrl = "https://m.facebook.com/dialog/oauth?client_id="+apikey+"&response_type=code&redirect_uri=http://10.1.1.8:3000/auth/facebook/callback&scope=email,publish_stream";
         window.location = permissionUrl;
 
 
