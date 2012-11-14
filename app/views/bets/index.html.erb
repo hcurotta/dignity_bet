@@ -1,5 +1,5 @@
 <header class="bar-title">
-  <h1 class="title bold">Dignity Bet</h1>
+  <h1 class="title bold">DIGNITY BET</h1>
   <%= link_to pick_challenger_path, "data-transition" => "slide-in", class: 'button' do %>
     <i class='icon-plus' style="font-size:15px"></i>
   <% end  %>
@@ -16,7 +16,6 @@
      <li class="tab-item">
        <a href="">
          <i class="icon-time" style='color:white; font-size: 30px;'></i>
-
          <div class="tab-label">Past Bets</div>
        </a>
      </li>
@@ -30,51 +29,48 @@
 
 
 <div class="content">
-  <div class="content-padded">
 
-<script>
-function accept_challenge(id,name){
- var conf = confirm("Accept " +name+"'s bet?") 
- if(conf===true){
-   window.location.replace("/bet/"+id+"/accept") 
- }
-}
-</script>
+<ul class='list'>
 
-
-<% if @new_challenges.any? %>
-    <h2><%= @new_challenges.count %> Challenge Requested</h2>
-    <ul>
-    <% @new_challenges.each do |request| %>
-    <div  onclick="accept_challenge(<%= request.id %>,'<%=request.owner.name %>')" data-ignore="push">
-     <li><%= request.owner.name %></li>
-     <li><%= request.challenge %></li>
-     </div>
-    </ul>
-<% end %> 
-<% end %> 
-
-
-<table>
-  <tr>
-
-<% @bets.each do |bet| %>
-
-  <tr>
-    <td><%= bet.owner.name   %></td>
-    <td><%= bet.challenger.name %></td>
-  </tr>
-  <tr>
-    <td><%= bet.challenge %></td>
-    <td><%= bet.status %></td>
-  </tr>
-  <tr>
-    <td><%= link_to 'Show', bet %></td>
-    <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
-  </tr>
+<li class="list-divider">Challenge requests <span class="count" style="background-color: red;"><%= @bet_requests.count %></span></li>
+<% @bet_requests.each do |bet| %>
+  <li>
+    <%= link_to accept_bet_path(bet),  "data-transition" => "slide-in" do %>
+      <h2><%= bet.challenger.name %></h2>
+      <p><%= bet.challenge %></p>
+      <span class="chevron"></span>
+    <% end %>
+  </li>
 <% end %>
-</table>
 
+<li class="list-divider">Pending Challenger Accept<span class="count" style="background-color: blue;"><%= @awaiting_accept.count %></span></li>
+<% @awaiting_accept.each do |bet| %>
+  <li>
+      <h2><%= bet.challenger.name %></h2>
+      <p><%= bet.challenge %></p>
+  </li>
+<% end %>
 
-</div>
+<li class="list-divider">Active Bets  <span class="count"><%= @active_bets.count %></span></li>
+<% @active_bets.each do |bet| %>  
+  <li>
+    <%= link_to bet,  "data-transition" => "slide-in" do %>
+      <h2 ><%= bet.challenger.name %></h2>
+      <p><%= bet.challenge %></p>
+      <span class="chevron"></span>
+    <% end %>
+  </li>
+<% end %>  
+
+<li class="list-divider">Bets Won <span class="count"><%= @bets_won.count %></span></li>
+<% @bets_won.each do |bet| %>  
+  <li>
+    <div ><%= bet.challenger.name %></div>
+    <div><%= bet.challenge %></div>
+    <span class="chevron"></span>
+  </li>
+<% end %>
+</ul>
+
+  
 </div>

@@ -2,10 +2,22 @@ class BetsController < ApplicationController
   # GET /bets
   # GET /bets.json
   def index
-    @bets = Bet.all
     
-    @new_challenges = Bet.where("challenger_id = ? AND status='pending'", current_user.id)
-
+    @bets = Bet.where("challenger_id = ? or owner_id = ?", current_user.id, current_user.id)
+    
+    @bet_requests = []
+    @active_bets = []
+    @bets_won = []
+    @awaiting_accept = []
+    
+    @bets.each do |bet|
+        @bet_requests << bet if (bet.status=='pending' && bet.owner != current_user)
+        @active_bets << bet if (bet.status=='active')
+        @awaiting_accept << bet if (bet.status == 'pending' && bet.owner == current_user)
+        @bets_won << bet if (bet.status=="won" and bet.owner == current_user)
+        @bets_won << bet if (bet.status=="lost" and bet.owner != current_user)
+    end 
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bets }
@@ -98,4 +110,24 @@ class BetsController < ApplicationController
   def accept
     @bet = Bet.find(params[:id])
   end
+  
+  def determine_result
+    @bet = Bet.find(params[:id])
+    @role = @bet.role(current_user)
+    
+  end
+  
+  def set_result
+    @bet = Bet.find(params[:id])
+    @bet.set_result(current_user, params[:determination])
+    
+    @tense_change = {"draw" => "draw", "won" => "win", "lost" => "lose"}
+    if @bet.decided? 
+      # @bet.post_loser_status
+      @bet.status = @bet.result(@bet.owner)
+      @bet.save
+    end
+    
+  end
+  
 end

@@ -8,6 +8,9 @@ DignityBet::Application.routes.draw do
   match 'bet/pick_challenger', to: 'bets#pick_challenger', as: 'pick_challenger'
   match 'bet/:id/accept', to: 'bets#accept', as: 'accept_bet'
   
+  get 'bet/:id/determine_result', to: 'bets#determine_result', as: 'determine_result'
+  get 'bet/:id/set_result', to: 'bets#set_result', as: 'set_result'
+  
   root to: 'sessions#login'
   
   # The priority is based upon order of creation:

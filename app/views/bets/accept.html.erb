@@ -28,11 +28,18 @@
 
 <div class="content">
   <div class="content-padded">
-
+    <h2>Accept bet with <%= @bet.owner.name %></h2>
+    <p><%= @bet.challenge %></p>
+    <br />
     <%= form_for(@bet) do |f| %>
-      <%= f.text_field :lose_status %>
+      <div class="input-group">
+        <div class="input-row">
+          <%= f.label :status %>
+          <%= f.text_field :lose_status, :placeholder => "Losing Status for #{@bet.owner.name}" %>
+        </div>
+      </div>
       <%= f.hidden_field :status, value: "active" %>
-      <%= f.submit %>
+      <%= f.submit class: "button-block button-main" %>
     <% end %>
 
   </div>

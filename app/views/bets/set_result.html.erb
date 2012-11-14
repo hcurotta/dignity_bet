@@ -1,0 +1,78 @@
+<header class="bar-title">
+  <%= link_to 'Back', @bet, "data-transition" => "slide-out", class: 'button-prev' %>
+  
+  <h1 class="title">DIGNITY BET</h1>
+</header>
+
+<nav class="bar-tab">
+   <ul class="tab-inner">
+     <li class="tab-item active">
+       <a href="">
+         <i class="icon-pushpin" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Live Bets</div>
+       </a>
+     </li>
+     <li class="tab-item">
+       <a href="">
+         <i class="icon-time" style='color:white; font-size: 30px;'></i>
+
+         <div class="tab-label">Past Bets</div>
+       </a>
+     </li>
+
+     </li>
+   </ul>
+ </nav>
+
+<div class="content">
+  <div class="content-padded">
+    
+  <% if @bet.decided? %>
+    <% if @bet.winner == current_user %>
+      Winner!
+    
+      <%= image_tag "http://graph.facebook.com/#{@bet.winner.uid}/picture?type=small", width: "50" %> <%= @bet.winner.name %>
+      Def
+      <%= image_tag "http://graph.facebook.com/#{@bet.other_guy(@bet.winner).uid}/picture?type=small", width: "50" %><%=   @bet.other_guy(@bet.winner).name %>
+    
+    <% elsif @bet.winner == 'draw' %>
+      <div class='logo'><i class='icon-heart'></i>
+          <h1 class='logo-text'>It's a Draw!</h1>
+      </div>
+      <div class='sublogo-text'>
+        I guess you and <%= @bet.other_guy(current_user).name %> can still be friends
+      </div>
+    <% elsif @bet.winner == @bet.other_guy(current_user) %>
+      You Lost!
+    
+      <%= image_tag "http://graph.facebook.com/#{@bet.winner.uid}/picture?type=small", width: "50" %> <%= @bet.winner.name %>
+      Def
+      <%= image_tag "http://graph.facebook.com/#{@bet.other_guy(@bet.winner).uid}/picture?type=small", width: "50" %><%= @bet.other_guy(@bet.winner).name %>
+    
+    <% end %>
+  
+
+  
+  <% else %>
+
+    <% if @bet.winner == 'disputed' %>
+      <div class='logo'><i class='icon-exclamation-sign'></i>
+        <h1 class='logo-text'>Dispute!</h1>
+      </div>
+      <div class='sublogo-text'>
+        <%= @bet.other_guy(current_user).name %> says you didn't <%= @tense_change[params[:determination]] %>
+      </div>
+    
+      <% elsif @bet.winner == 'undecided' %>
+      <div class='logo'><i class='icon-time'></i>
+        <h1 class='logo-text'>Undecided</h1>
+      </div>
+      <div class='sublogo-text'>
+        Waiting on <%= @bet.other_guy(current_user).name %>
+      </div>
+      <% end %>
+    
+  <% end %>
+
+  </div>
+  </div>

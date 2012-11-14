@@ -1,6 +1,6 @@
 <header class="bar-title">
-  <%= link_to 'Back', bets_path, "data-transition" => "slide-out", class: 'button-prev' %>
-  <h1 class="title">Pick Challenger</h1>
+  <%= link_to 'Back', @bet, "data-transition" => "slide-out", class: 'button-prev' %>
+  <h1 class="title bold">DIGNITY BET</h1>
 </header>
 
 <nav class="bar-tab">
@@ -14,7 +14,6 @@
      <li class="tab-item">
        <a href="">
          <i class="icon-time" style='color:white; font-size: 30px;'></i>
-
          <div class="tab-label">Past Bets</div>
        </a>
      </li>
@@ -23,22 +22,12 @@
    </ul>
  </nav>
 
-
 <div class="content">
   <div class="content-padded">
 
-
-
-<ul class="list">
-  <% @friends_with_app.each do |friend| %>
-    <li>
-    <%= link_to new_bet_path(:challenger_id=>friend.id), "data-transition" => "slide-in"  do %>
-    <%= image_tag "http://graph.facebook.com/#{friend.uid}/picture?type=small", width: "50" %> 
-     <div class="friend-text"><%= friend.name %></div>
-     <span class="chevron"></span></li>
-    <% end %>
-  <% end %>
-</ul>
+<%= link_to "I Won", set_result_path(:id => @bet.id, :role => @role, :determination => "won"), class: "button-block button-positive" %>
+<%= link_to "I Lost", set_result_path(:id => @bet.id, :role => @role, :determination => "lost"), class: "button-block button-negative" %>
+<%= link_to "It's a draw", set_result_path(:id => @bet.id, :role => @role, :determination => "draw"), class: "button-block" %>
 
 </div>
 </div>

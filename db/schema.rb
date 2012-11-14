@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112015642) do
+ActiveRecord::Schema.define(:version => 20121113230748) do
 
   create_table "bets", :force => true do |t|
     t.integer  "owner_id"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(:version => 20121112015642) do
     t.string   "win_status"
     t.string   "lose_status"
     t.string   "status"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "owner_says"
+    t.string   "challenger_says"
   end
 
   create_table "users", :force => true do |t|

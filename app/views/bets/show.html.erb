@@ -1,35 +1,45 @@
+<header class="bar-title">
+  <%= link_to 'Back', bets_path, "data-transition" => "slide-out", class: 'button-prev' %>
+  <h1 class="title">Challenge</h1>
+</header>
+
+<nav class="bar-tab">
+   <ul class="tab-inner">
+     <li class="tab-item active">
+       <a href="">
+         <i class="icon-pushpin" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Live Bets</div>
+       </a>
+     </li>
+     <li class="tab-item">
+       <a href="">
+         <i class="icon-time" style='color:white; font-size: 30px;'></i>
+
+         <div class="tab-label">Past Bets</div>
+       </a>
+     </li>
+
+     </li>
+   </ul>
+ </nav>
+
+<div class="content">
+  <div class="content-padded">
+    
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Owner:</b>
-  <%= @bet.owner %>
+  <div><%= image_tag "http://graph.facebook.com/#{@bet.owner.uid}/picture?type=large", width: 80 %></div>
+  <h3><%= @bet.owner.name %></h3>
 </p>
-
+<div>VS</div>
 <p>
-  <b>Challenger:</b>
-  <%= @bet.challenger %>
+  <div><%= image_tag "http://graph.facebook.com/#{@bet.challenger.uid}/picture?type=large", width: 80 %></div>
+  <h3><%= @bet.challenger.name %></h3>
 </p>
 
-<p>
-  <b>Challenge:</b>
-  <%= @bet.challenge %>
-</p>
-
-<p>
-  <b>Win status:</b>
-  <%= @bet.win_status %>
-</p>
-
-<p>
-  <b>Lose status:</b>
-  <%= @bet.lose_status %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @bet.status %>
-</p>
+<h1><%= @bet.challenge %></h1>
 
 
-<%= link_to 'Edit', edit_bet_path(@bet) %> |
-<%= link_to 'Back', bets_path %>
+<%= link_to 'Set Result', determine_result_path(id: @bet.id), "data-transition" => "slide-in", class: "button-block button-main" if (@bet.status="active") %>
+</div></div>
