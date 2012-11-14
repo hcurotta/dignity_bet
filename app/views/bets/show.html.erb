@@ -28,18 +28,48 @@
     
 <p id="notice"><%= notice %></p>
 
-<p>
-  <div><%= image_tag "http://graph.facebook.com/#{@bet.owner.uid}/picture?type=large", width: 80 %></div>
-  <h3><%= @bet.owner.name %></h3>
-</p>
-<div>VS</div>
-<p>
-  <div><%= image_tag "http://graph.facebook.com/#{@bet.challenger.uid}/picture?type=large", width: 80 %></div>
-  <h3><%= @bet.challenger.name %></h3>
-</p>
+<table class="head-to-head">
+  <tr>
+    <td class="head-to-head">
+      <div><%= image_tag "http://graph.facebook.com/#{@bet.owner.uid}/picture?type=large", width: 100 %></div>
+    </td>
+    <td>
+      <h1><i class="icon-bolt"></i></h1>
+    </td>
+    <td class="head-to-head">
+      <div><%= image_tag "http://graph.facebook.com/#{@bet.challenger.uid}/picture?type=large", width: 100 %></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3><%= @bet.owner.name %></h3>
+    </td>
+    <td>
+    </td>
+    <td>
+      <h3><%= @bet.challenger.name %></h3>
+    </td>
+</table>
 
-<h1><%= @bet.challenge %></h1>
+<h3 class="logo-text"><%= @bet.challenge %></h3>
+
+<% case @bet.status %>
+<% when "drew" %>
+  <h3 class="result-text">It's a Draw!</h3>
+<% when "active" %>
+  <!-- <h3 class="result-text" style="color:green;">Active</h3> -->
+<% when "lost","won" %>
+  <% if @bet.winner == current_user %>
+    <h3 class="result-text">You won!</h3>
+  <% else %>
+    <h3 class="result-text">You lost :-(</h3>
+  <% end %>
+<% end %>
 
 
-<%= link_to 'Set Result', determine_result_path(id: @bet.id), "data-transition" => "slide-in", class: "button-block button-main" if (@bet.status="active") %>
+<%= link_to 'Set Result', determine_result_path(id: @bet.id), "data-transition" => "slide-in", class: "button-block button-main" if (@bet.status=="active") %>
+
+
+
+
 </div></div>

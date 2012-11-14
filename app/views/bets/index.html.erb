@@ -1,5 +1,8 @@
 <header class="bar-title">
-  <h1 class="title bold">DIGNITY BET</h1>
+  <%= link_to bets_path, class: 'button', style: "border:none;" do %>
+    <i class='icon-refresh' style="font-size:15px"></i>
+  <% end  %>
+  <h1 class="title bold">Current Bets</h1>
   <%= link_to pick_challenger_path, "data-transition" => "slide-in", class: 'button' do %>
     <i class='icon-plus' style="font-size:15px"></i>
   <% end  %>
@@ -14,19 +17,13 @@
        </a>
      </li>
      <li class="tab-item">
-       <a href="">
+       <%= link_to history_path, "data-transition" => "slide-in" do %>
          <i class="icon-time" style='color:white; font-size: 30px;'></i>
          <div class="tab-label">Past Bets</div>
-       </a>
-     </li>
-
+       <% end %>
      </li>
    </ul>
  </nav>
-
-
-
-
 
 <div class="content">
 
@@ -61,15 +58,6 @@
     <% end %>
   </li>
 <% end %>  
-
-<li class="list-divider">Bets Won <span class="count"><%= @bets_won.count %></span></li>
-<% @bets_won.each do |bet| %>  
-  <li>
-    <div ><%= bet.challenger.name %></div>
-    <div><%= bet.challenge %></div>
-    <span class="chevron"></span>
-  </li>
-<% end %>
 </ul>
 
   

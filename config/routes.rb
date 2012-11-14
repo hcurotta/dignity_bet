@@ -10,6 +10,8 @@ DignityBet::Application.routes.draw do
   
   get 'bet/:id/determine_result', to: 'bets#determine_result', as: 'determine_result'
   get 'bet/:id/set_result', to: 'bets#set_result', as: 'set_result'
+
+  match 'history', to: 'bets#history', as: 'history'
   
   root to: 'sessions#login'
   

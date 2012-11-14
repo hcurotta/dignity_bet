@@ -123,11 +123,29 @@ class BetsController < ApplicationController
     
     @tense_change = {"draw" => "draw", "won" => "win", "lost" => "lose"}
     if @bet.decided? 
-      # @bet.post_loser_status
+      @bet.post_loser_status
       @bet.status = @bet.result(@bet.owner)
       @bet.save
     end
     
   end
   
+  def history
+    @bets = Bet.where("challenger_id = ? or owner_id = ? and status != ?", current_user.id, current_user.id, "active")
+    
+    @bets_drawn = []
+    @bets_won = []
+    @bets_lost = []
+    
+    @bets.each do |bet|
+        @bets_drawn << bet if (bet.status=='drew')
+        @bets_won << bet if (bet.winner == current_user)
+        @bets_lost << bet if (bet.winner == bet.other_guy(current_user))
+    end 
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @bets }
+    end
+  end
 end

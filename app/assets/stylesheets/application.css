@@ -42,12 +42,22 @@
 	margin-top: 50px;
 }
 
-h1.logo-text{
+.logo-text{
 	font-size: 60px;
 	font-family: 'Open Sans', sans-serif; font-weight: 300; 
 	text-shadow: 0px 0px 0px #000000;
 	margin-top: 0px;
 	margin-bottom: 10px;
+}
+
+.result-text{
+	font-size: 35px;
+	text-align:center;
+}
+
+h3.logo-text{
+	font-size: 35px;
+	text-align:center;
 }
 
 .sublogo-text{
@@ -57,6 +67,19 @@ h1.logo-text{
 	font-size: 20px;
 	font-family: 'Open Sans', sans-serif; font-weight: 300; 
 	text-shadow: 0px 0px 0px #000000;
+}
+
+.head-to-head{
+	text-align:center;
+}
+
+.head-to-head h1{
+	font-size: 90px;
+}
+
+
+td.head-to-head{
+	width: 100px;
 }
 
 .bet-box {

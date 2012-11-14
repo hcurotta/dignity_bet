@@ -1,0 +1,69 @@
+<header class="bar-title">
+  <%= link_to history_path, class: 'button', style: "border:none;" do %>
+    <i class='icon-refresh' style="font-size:15px"></i>
+  <% end  %>
+  <h1 class="title bold">Past Bets</h1>
+  <%= link_to pick_challenger_path, "data-transition" => "slide-in", class: 'button' do %>
+    <i class='icon-plus' style="font-size:15px"></i>
+  <% end  %>
+</header>
+
+<nav class="bar-tab">
+   <ul class="tab-inner">
+     <li class="tab-item">
+       <%= link_to bets_path, "data-transition" => "slide-out" do %>
+         <i class="icon-pushpin" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Live Bets</div>
+       <% end %>
+     </li>
+     <li class="tab-item active">
+       <a href="">
+         <i class="icon-time" style='color:white; font-size: 30px;'></i>
+         <div class="tab-label">Past Bets</div>
+       </a>
+     </li>
+
+     </li>
+   </ul>
+ </nav>
+
+<div class="content">
+
+<ul class='list'>
+
+<li class="list-divider">Won <span class="count"><%= @bets_won.count %></span></li>
+<% @bets_won.each do |bet| %>  
+  <li>
+    <%= link_to bet,  "data-transition" => "slide-in" do %>
+      <h2 ><%= bet.challenger.name %></h2>
+      <p><%= bet.challenge %></p>
+      <span class="chevron"></span>
+    <% end %>
+  </li>
+<% end %>  
+
+<li class="list-divider">Lost <span class="count"><%= @bets_lost.count %></span></li>
+<% @bets_lost.each do |bet| %>  
+  <li>
+    <%= link_to bet,  "data-transition" => "slide-in" do %>
+    <h2><%= bet.challenger.name %></h2>
+    <p><%= bet.challenge %></p>
+    <span class="chevron"></span>
+    <% end %>
+  </li>
+<% end %>
+
+<li class="list-divider">Drawn <span class="count"><%= @bets_drawn.count %></span></li>
+<% @bets_drawn.each do |bet| %>  
+  <li>
+    <%= link_to bet,  "data-transition" => "slide-in" do %>
+    <h2><%= bet.challenger.name %></h2>
+    <p><%= bet.challenge %></p>
+    <span class="chevron"></span>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+  
+</div>
